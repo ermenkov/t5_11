@@ -409,10 +409,13 @@ def fsdp_main(args):
         if rank == 0:
             print(f"Model in BF16, all training in BF16")
     sub_group = None
-    if model_sharding_strategy == ShardingStrategy.HYBRID_SHARD:
-        subgroup, _ = dist.new_subgroups()
-        if rank == 0:
-            print(f"--> HSDP active - subgroup created - {subgroup=}")
+    try:
+        if model_sharding_strategy == ShardingStrategy.HYBRID_SHARD:
+            subgroup, _ = dist.new_subgroups()
+            if rank == 0:
+                print(f"--> HSDP active - subgroup created - {subgroup=}")
+    except AttributeError:
+        print ("HYBRID_SHARD not supported in this version of PyTorch")
 
     model = FSDP(
         model,
@@ -681,11 +684,11 @@ def fsdp_main(args):
 
         if rank == 0:
 
-            # print("LEN Tflops",len(tflops_gpu), sum(tflops_gpu), tflops_gpu)
-            print(
-                f"gflops/gpu = {sum(gflops_gpu) / len(gflops_gpu):.2f} ({stdev(gflops_gpu):.2f})\n"
-                f"Tflops/gpu = {sum(tflops_gpu) / len(tflops_gpu):.2f} ({stdev(tflops_gpu):.2f})\n"
-            )
+            print("LEN Tflops",len(tflops_gpu), sum(tflops_gpu), tflops_gpu)
+            # print(
+            #     f"gflops/gpu = {sum(gflops_gpu) / len(gflops_gpu):.2f} ({stdev(gflops_gpu):.2f})\n"
+            #     f"Tflops/gpu = {sum(tflops_gpu) / len(tflops_gpu):.2f} ({stdev(tflops_gpu):.2f})\n"
+            # )
         # memory summary
         if cfg.memory_report and rank == 0:
             print(

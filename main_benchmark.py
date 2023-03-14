@@ -712,11 +712,11 @@ def fsdp_main(args):
             )
         if rank == 0:
 
-            # print("LEN Tflops",len(tflops_gpu), sum(tflops_gpu), tflops_gpu)
-            print(
-                f"gflops/gpu = {sum(gflops_gpu) / len(gflops_gpu):.2f} ({stdev(gflops_gpu):.2f})\n"
-                f"Tflops/gpu = {sum(tflops_gpu) / len(tflops_gpu):.2f} ({stdev(tflops_gpu):.2f})\n"
-            )
+            print("LEN Tflops",len(tflops_gpu), sum(tflops_gpu), tflops_gpu)
+            # print(
+            #     f"gflops/gpu = {sum(gflops_gpu) / len(gflops_gpu):.2f} ({stdev(gflops_gpu):.2f})\n"
+            #     f"Tflops/gpu = {sum(tflops_gpu) / len(tflops_gpu):.2f} ({stdev(tflops_gpu):.2f})\n"
+            # )
         # print(
         # f"Cuda event elapsed time: {init_start_event.elapsed_time(init_end_event) / 1000}sec"
         # )
