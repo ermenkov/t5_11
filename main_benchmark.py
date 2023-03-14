@@ -172,7 +172,7 @@ def setup_environ_flags(cfg, rank):
         os.environ["TORCH_DISTRIBUTED_DEBUG"] = "DETAIL"
         if rank == 0:
             print(f"--> running with torch dist debug set to detail, rank {rank}")
-    os.environ["NCCL_DEBUG"] = "WARN"
+    os.environ["NCCL_DEBUG"] = "INFO"
     os.environ["PYTHONFAULTHANDLER"] = str(1)
 
 
