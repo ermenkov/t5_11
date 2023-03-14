@@ -79,7 +79,7 @@ import performance
 
 # some globals
 g_port = "12369"
-g_addr = "localhost"
+g_addr = "192-18-137-47"
 
 
 def _is_rank_0():
@@ -154,11 +154,11 @@ def get_policies(cfg, rank):
 
 
 def setup(rank, world_size, cfg):
-    # os.environ["MASTER_ADDR"] = g_addr
-    # os.environ["MASTER_PORT"] = cfg.host_port
+    os.environ["MASTER_ADDR"] = g_addr
+    os.environ["MASTER_PORT"] = cfg.host_port
 
     # initialize the process group
-    dist.init_process_group("nccl")  # , rank=rank, world_size=world_size)
+    dist.init_process_group("nccl", rank=rank, world_size=world_size)
 
 
 def setup_environ_flags(cfg, rank):
