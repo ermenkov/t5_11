@@ -41,7 +41,7 @@ class benchmark_config:
     use_fp16: bool = False
 
     hf_activation_checkpointing: bool = False
-    fsdp_activation_checkpointing: bool = True
+    fsdp_activation_checkpointing: bool = False
 
     # datasets
     dataset_train = "datasets_grammar/gtrain_1k.csv"  # grammar_13k.csv
