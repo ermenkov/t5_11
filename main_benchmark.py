@@ -158,7 +158,7 @@ def setup(rank, world_size, cfg):
     os.environ["MASTER_PORT"] = cfg.host_port
 
     # initialize the process group
-    dist.init_process_group("nccl", rank=rank, world_size=world_size)
+    dist.init_process_group("nccl", rank=rank, world_size=world_size, timeout=datetime.timedelta(seconds=30))
 
 
 def setup_environ_flags(cfg, rank):
