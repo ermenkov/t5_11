@@ -62,7 +62,7 @@ from ChildTuningOptimizer import ChildTuningAdamW
 
 # from sklearn.model_selection import train_test_split
 import time
-from datetime import datetime
+from datetime import datetime, timedelta
 
 # local imports
 import verify
@@ -158,7 +158,7 @@ def setup(rank, world_size, cfg):
     os.environ["MASTER_PORT"] = cfg.host_port
 
     # initialize the process group
-    dist.init_process_group("nccl", rank=rank, world_size=world_size, timeout=datetime.timedelta(seconds=30))
+    dist.init_process_group("nccl", rank=rank, world_size=world_size, timeout=timedelta(seconds=30))
 
 
 def setup_environ_flags(cfg, rank):
