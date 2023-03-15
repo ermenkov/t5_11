@@ -11,7 +11,7 @@ class benchmark_config:
     host_port: str = "12368"
 
     # model
-    model_name = "t5-11b"  # google/t5-v1_1-xl"  # "google/t5-v1_1-small" # t5-11b
+    model_name = "google/t5-v1_1-small"  # google/t5-v1_1-xl"  # "google/t5-v1_1-small" # t5-11b
     tokenizer = "t5-large"
     model_max_length = 512
     # available models
