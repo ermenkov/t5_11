@@ -79,7 +79,7 @@ import performance
 
 # some globals
 g_port = "12369"
-g_addr = "192-18-137-47"
+g_addr = "155-248-214-232"
 
 
 def _is_rank_0():
