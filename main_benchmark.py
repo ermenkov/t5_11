@@ -79,7 +79,7 @@ import performance
 
 # some globals
 g_port = "12369"
-g_addr = "155-248-214-232"
+g_addr = "104-171-202-225"
 
 
 def _is_rank_0():
@@ -773,3 +773,6 @@ if __name__ == "__main__":
         join=True,
     )
     """
+
+
+# torchrun --nnodes=1 --nproc_per_node=1 --rdzv_id=101 --rdzv_endpoint="localhost:5679" --rdzv_backend=c10d main_benchmark.py

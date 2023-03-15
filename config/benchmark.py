@@ -64,7 +64,7 @@ class benchmark_config:
     # logging
     track_memory = True
     memory_report: bool = True
-    nccl_debug_handler: bool = True
+    nccl_debug_handler: bool = False
     distributed_debug: bool = True
 
     # Fine Tuning
